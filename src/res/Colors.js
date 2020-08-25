@@ -1,0 +1,7 @@
+const COLORS = {
+  PRIMARY_COLOR: '#28AFB0',
+  PRIMARY_COLOR_DARK: '#19647E',
+  WHITE: '#FFFFFF',
+};
+
+export default COLORS;
