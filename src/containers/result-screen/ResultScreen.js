@@ -1,21 +1,32 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, StyleSheet, SafeAreaView} from 'react-native';
+import Answers from '../../components/answers/Answers';
 
 class ResultScreen extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
+  onBackPressed = () => {
+    this.props.navigation.goBack();
+  };
   render() {
-    const items = this.props.route.params;
-    console.log('received props', items);
+    const answers = this.props.route.params.answers;
     return (
-      <View>
-        <Text>Result Screen</Text>
+      <View style={styles.container}>
+        <SafeAreaView>
+          <Answers
+            answersData={answers}
+            onBackPressed={() => this.onBackPressed()}
+          />
+        </SafeAreaView>
       </View>
     );
   }
 }
 
 export default ResultScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+  },
+});

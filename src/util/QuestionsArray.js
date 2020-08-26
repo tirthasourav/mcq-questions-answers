@@ -20,7 +20,7 @@ const QuestionsArray = [
         value: '4',
       },
     ],
-    correct_answer: 1,
+    correct_answer: '1',
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const QuestionsArray = [
         value: 'None of above',
       },
     ],
-    correct_answer: 1,
+    correct_answer: 'Virtual DOM',
   },
   {
     id: 3,
@@ -66,7 +66,7 @@ const QuestionsArray = [
         value: 'None of above',
       },
     ],
-    correct_answer: 1,
+    correct_answer: 'User Interface layer in an application',
   },
   {
     id: 4,
@@ -89,7 +89,7 @@ const QuestionsArray = [
         value: 'None of above',
       },
     ],
-    correct_answer: 2,
+    correct_answer: 'Not be changed in the component',
   },
   {
     id: 5,
@@ -106,14 +106,14 @@ const QuestionsArray = [
       },
       {
         key: 3,
-        value: 'Are asynchronous but can be made synchronous when required',
+        value: 'Are asynchronous but can be made synchronous when required ',
       },
       {
         key: 4,
         value: 'None of above',
       },
     ],
-    correct_answer: 2,
+    correct_answer: 'Asynchronous in nature',
   },
 ];
 

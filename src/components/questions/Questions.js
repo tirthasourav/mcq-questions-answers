@@ -1,9 +1,8 @@
 import React from 'react';
-import {View, Text, FlatList, StyleSheet} from 'react-native';
-// import {RadioButton} from 'rn-customizable-radio-button';
-import QuestionsArray from '../../util/QuestionsArray';
+import {View, Text, FlatList} from 'react-native';
 import FooterButton from '../footer/FooterButton';
 import RadioButton from '../radio-button/RadioButton';
+import styles from './QuestionsStyles';
 
 const Questions = ({questionData, onSelected, onSubmitPressed}) => {
   return (
@@ -12,49 +11,26 @@ const Questions = ({questionData, onSelected, onSubmitPressed}) => {
       keyExtractor={(item) => item.id.toString()}
       scrollEnabled
       renderItem={({item}) => (
-        <View
-          style={{
-            alignItems: 'flex-start',
-            marginHorizontal: '2.5%',
-            marginTop: 10,
-          }}>
-          <Text>
+        <View style={styles.container}>
+          <Text style={styles.questionText}>
             {item.id}. {item.question}
           </Text>
-          <RadioButton
-            items={item.options}
-            selectedKey={item.given_answer}
-            onPress={(key) => onSelected(key, item)}
-            orientation="vertical"
-            buttonPosition="left"
-            selectedButtonStyle={styles.selectedRb}
-            buttonStyle={styles.radioCircle}
-          />
+          <View style={styles.radioContainer}>
+            <RadioButton
+              items={item.options}
+              selectedKey={item.given_answer_key}
+              onPress={(key, value) => onSelected(key, value, item)}
+              orientation="vertical"
+              buttonPosition="left"
+            />
+          </View>
         </View>
       )}
-      ListFooterComponent={<FooterButton onPress={onSubmitPressed} />}
+      ListFooterComponent={
+        <FooterButton onPress={onSubmitPressed} title="SUBMIT" />
+      }
     />
   );
 };
 
 export default Questions;
-
-const styles = StyleSheet.create({
-  selectedRb: {
-    width: 15,
-    height: 15,
-    borderRadius: 7,
-    backgroundColor: 'lightgreen',
-    marginHorizontal: 5,
-  },
-  radioCircle: {
-    height: 15,
-    width: 15,
-    borderRadius: 7,
-    borderWidth: 2,
-    borderColor: 'red',
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    marginHorizontal: 5,
-  },
-});

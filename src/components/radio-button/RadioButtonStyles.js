@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import COLORS from '../../res/Colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -9,17 +10,17 @@ export const styles = StyleSheet.create({
   },
   radioText: {
     marginLeft: 5,
-    fontSize: 12,
-    color: '#000',
+    fontSize: 14,
+    color: COLORS.MEDIUM_GREY,
     textAlign: 'left',
-    // fontWeight: 'Bold'
+    fontWeight: 'bold',
   },
   radioCircle: {
     height: 15,
     width: 15,
     borderRadius: 7,
     borderWidth: 2,
-    borderColor: '#3740ff',
+    borderColor: COLORS.INDIAN_RED,
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 5,
@@ -28,7 +29,7 @@ export const styles = StyleSheet.create({
     width: 15,
     height: 15,
     borderRadius: 7,
-    backgroundColor: '#3740ff',
+    backgroundColor: COLORS.FOREST_GREEN,
     marginHorizontal: 5,
   },
   verticalOrientation: {
