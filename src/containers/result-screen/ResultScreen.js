@@ -3,9 +3,14 @@ import {View, StyleSheet, SafeAreaView} from 'react-native';
 import Answers from '../../components/answers/Answers';
 
 class ResultScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   onBackPressed = () => {
     this.props.navigation.goBack();
   };
+
   render() {
     const answers = this.props.route.params.answers;
     return (

@@ -3,6 +3,7 @@ import {View, Text, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FooterButton from '../footer/FooterButton';
 import styles from './AnswersStyles';
+import COLORS from '../../res/Colors';
 
 const Answers = ({answersData, onBackPressed}) => {
   return (
@@ -29,8 +30,8 @@ const Answers = ({answersData, onBackPressed}) => {
                   size={20}
                   color={
                     item.given_answer_value === item.correct_answer
-                      ? 'green'
-                      : 'red'
+                      ? COLORS.FOREST_GREEN
+                      : COLORS.INDIAN_RED
                   }
                 />
               </View>

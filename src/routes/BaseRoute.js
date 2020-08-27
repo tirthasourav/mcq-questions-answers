@@ -15,8 +15,8 @@ function BaseRoute() {
         headerStyle: {backgroundColor: COLORS.PRIMARY_COLOR},
         headerTitleAlign: COLORS.WHITE,
       }}>
-      <Stack.Screen name="Test Screen" component={TestScreen} />
-      <Stack.Screen name="Result Screen" component={ResultScreen} />
+      <Stack.Screen name="ASSIGNMENT" component={TestScreen} />
+      <Stack.Screen name="RESULT" component={ResultScreen} />
     </Stack.Navigator>
   );
 }

@@ -3,6 +3,8 @@ import {View, StyleSheet, SafeAreaView} from 'react-native';
 import Questions from '../../components/questions/Questions';
 import QuestionsArray from '../../util/QuestionsArray';
 
+const data = QuestionsArray;
+
 class TestScreen extends Component {
   constructor(props) {
     super(props);
@@ -12,36 +14,38 @@ class TestScreen extends Component {
   }
 
   componentDidMount() {
-    this.getData();
-    // this.willFocusSubscription = this.props.navigation.addListener(
-    //   'willFocus',
-    //   () => {
-    //     this.setState({questionData: QuestionsArray});
-    //   },
-    // );
+    this.willFocusSubscription = this.props.navigation.addListener(
+      'focus',
+      () => {
+        this.getData();
+      },
+    );
   }
 
-  // componentWillUnmount() {
-  //   this.willFocusSubscription.remove();
-  // }
+  componentWillUnmount() {
+    this.willFocusSubscription.remove();
+  }
 
   getData = () => {
-    //Get data by calling api
-    //store the received data to state
-    const qArray = [...QuestionsArray];
-    this.setState({questionData: qArray});
+    //create a copy of original array
+    const qData = data.map((_arrayElement) => Object.assign({}, _arrayElement));
+    this.setState({questionData: qData});
   };
 
   onSubmitPressed = () => {
     //navifgate to next screen to show result
-    this.props.navigation.navigate('Result Screen', {
+    this.props.navigation.navigate('RESULT', {
       answers: this.state.questionData,
     });
   };
 
   onSelectedAnswer = (answer_key, answer_value, question) => {
     const question_id = question.id;
-    const newArray = [...this.state.questionData];
+
+    //creating a copy of question array from current state
+    const newArray = this.state.questionData.map((_arrayElement) =>
+      Object.assign({}, _arrayElement),
+    );
 
     //push  key-value pairs of answers given by user to the existing questions array
     newArray[question_id - 1].given_answer_key = answer_key;
@@ -52,8 +56,6 @@ class TestScreen extends Component {
   };
 
   render() {
-    console.log(this.state.questionData);
-    console.log(QuestionsArray);
     return (
       <View style={styles.container}>
         <SafeAreaView>
